@@ -1,0 +1,71 @@
+<?php
+session_start();
+include 'connection.php';
+if (isset($_POST['submit'])) {
+	$firstname =$_POST['firstname'];
+	$lastname=$_POST['lastname'];
+        $email=$_POST['email'];
+        $contact=$_POST['contact'];
+        $dob=$_POST['dob'];
+        $amt=$_POST['amt'];
+        $seniorcitizen=$_POST['seniorcitizen'];
+        $gender=$_POST['gender'];
+        $profession=$_POST['profession'];
+
+   $insertquery = "insert into ques6 (firstname, lastname, email, contact, dob, amt, seniorcitizen, gender, profession) VALUES ('$firstname','$lastname','$email','$contact','$dob','$amt','$seniorcitizen','$gender','$profession')";
+		$iquery = mysqli_query($con, $insertquery);
+	if($iquery) {
+	echo("" ) ;
+header("location: http://localhost/SUMIT/creditcarddetails.php");
+	}else{
+	echo("failed");
+	} 
+}
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>PAYMENT GATEWAY</title>
+<link rel="stylesheet" href="selector.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body background="image1.png" class="bg">
+
+
+<div style="margin-right:200px; margin-left:200px; margin-top:60px; margin-bottom:60px; padding:30px; border:10px solid grey; border-radius: 50px; background-color: silver;">
+<FORM name="ques6" Action="" Method="post" autocomplete="off">
+<center><H1 id="heading">CUSTOMER DETAILS</H1></center><BR><BR>
+<p>First Name : <i class="fa fa-id-card" style="font-size:25px; color:orange;"></i> <INPUT TYPE="TEXT" NAME="firstname" SIZE="30" MAXLENGTH="25" placeholder="Enter your First Name" REQUIRED></p><BR><BR>
+Last Name : <i class="fa fa-address-card" style="font-size:25px; color:brown;"></i> <INPUT TYPE="TEXT" NAME="lastname" SIZE="30" MAXLENGTH="25" placeholder="Enter your Last Name" REQUIRED><BR><BR>
+E-mail Id : <i class="fa fa-envelope-open" style="font-size:25px; color:green;"></i> <INPUT TYPE="EMAIL" NAME="email" class="special" SIZE="25"placeholder="Enter your E-mail ID" MAXLENGTH="25"><BR><BR>
+Contact Number : <i class="fa fa-phone" style="font-size:25px; color:sky;"></i> <input type="text" NAME="contact" SIZE="30" MAXLENGTH="10" MINLENGTH="10" placeholder="Enter your Contact Number" REQUIRED><br><br>
+Date of Birth : <i class="fa fa-calendar" style="font-size:25px; color:purple;"></i> <input type="date" SIZE="30" name="dob"><br><br>
+Amount to be Paid : <input type="text"  SIZE="30" name="amt" placeholder="Enter Amount" REQUIRED><br><br>
+Are You a Senior Citizen : <input type="Checkbox" name="seniorcitizen" CHECKED><br><br>
+
+<fieldset  style="border-radius: 10px">
+  <legend>Gender</legend>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Male <i class="fa fa-male" style="font-size:30px; color:blue;"></i> <input type="radio" name="gender"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Female <i class="fa fa-female" style="font-size:30px; color:red;"></i> <input type="radio" CHECKED name="gender">
+</fieldset>
+
+<br><br>
+Profession : <i class="fa fa-user" style="font-size:25px; color:brown;"></i> <SELECT NAME="profession" id="profession" SIZE=1>
+  <OPTION value="" SELECTED DISABLED>--Select your profession--</OPTION>
+  <OPTION value="Student">Student</OPTION>
+  <OPTION value="Business Man">Business Man</OPTION>
+  <OPTION value="Teacher">Teacher</OPTION>
+  <OPTION value="Civil Servant">Civil Servant</OPTION>
+  <OPTION value="No profession">No profession</OPTION>
+  <OPTION value="Others">Others</OPTION>
+ </SELECT><BR><BR><BR><BR>
+
+
+<INPUT TYPE="Reset" value="Reset" class="button" style="padding: 8px 15px;  border-radius: 20px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <INPUT TYPE="Submit" name="submit" value="Proceed to fill Credit Card Details" class="button" style="padding: 8px 15px;  border-radius: 20px;"><br><br><br><br>
+Contact us <a href="https://support.microsoft.com/en-in/contactus/" target="_blank"> by clicking here </a><br><br><br>
+
+</FORM>
+</div>
+
+</body>
+</html>
