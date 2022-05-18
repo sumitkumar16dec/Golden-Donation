@@ -1,0 +1,47 @@
+<?php
+session_start();
+include 'connection.php';
+if (isset($_POST['submit'])) {
+	$card =$_POST['card'];
+	$customer=$_POST['customer'];
+        $valid=$_POST['valid'];
+        $cvv=$_POST['cvv'];
+
+
+   $insertquery = "insert into creditcarddetails (card, customer, valid, cvv) VALUES ('$card','$customer','$valid','$cvv')";
+		$iquery = mysqli_query($con, $insertquery);
+	if($iquery) {
+	echo("" ) ;
+header("location: http://localhost/SUMIT/feedback.php");
+	}else{
+	echo("failed");
+	} 
+}
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Credit Card Details</title>
+<link rel="stylesheet" href="selector.css">
+</head>
+<body background="image2.jpeg">
+
+<div style="margin-right:150px; margin-left:150px; margin-top:60px; margin-bottom:60px; padding:30px; border:10px solid black; border-radius: 50px; background-color: silver;">
+<FORM name="creditcarddetails" Action="" Method="post" autocomplete="off">
+<center><H1 id="heading">CREDIT CARD DETAILS</H1></center><BR><BR><BR><BR><BR><BR>
+
+CARD NUMBER : <INPUT TYPE="TEXT" NAME="card" SIZE="30" MAXLENGTH="19" MINLENGTH="19" placeholder="XXXX-XXXX-XXXX-XXXX" REQUIRED>
+<img src="image2.jpg" align="right" height="150px" width="270px" style="border-radius: 20px"><BR><BR><BR>
+NAME AS ON CARD : <INPUT TYPE="TEXT" NAME="customer" SIZE="30" MAXLENGTH="25" placeholder="Enter your Name" REQUIRED><BR><BR><BR><BR>
+
+VALID UPTO : <INPUT TYPE="month" NAME="valid" REQUIRED>&nbsp; &nbsp; &nbsp; &nbsp;
+CVV NUMBER : <INPUT TYPE="PASSWORD" NAME="cvv" SIZE="10" MAXLENGTH="3" MINLENGTH="3" REQUIRED>
+<BR><BR><BR><BR><BR><BR><BR><BR><BR>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<INPUT TYPE="Submit" name="submit" value="Proceed to Pay" class="button" style="padding: 7px;  border-radius: 20px;">
+
+</form>
+</div>
+</body>
+</html>
