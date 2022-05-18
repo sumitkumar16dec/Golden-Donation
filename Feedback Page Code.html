@@ -1,0 +1,51 @@
+<?php
+session_start();
+include 'connection.php';
+if (isset($_POST['submit'])) {
+	$feedback =$_POST['feedback'];
+	$file=$_POST['file'];
+
+   $insertquery = "insert into feedback (feedback, file) VALUES ('$feedback','$file')";
+		$iquery = mysqli_query($con, $insertquery);
+	if($iquery) {
+	echo("" ) ;
+header("location: thanks.html");
+	}else{
+	echo("failed");
+	} 
+}
+?>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Feedback</title>
+<link rel="stylesheet" href="feedbackselector.css">
+
+<style>
+input[type="Submit"]:hover{
+   background-color: yellow;
+   font-size: 180%;
+}
+</style>
+
+</head>
+<body background="image5.png">
+<br><br>
+<h1 align="center">Payment Successful.</h1>
+<form name="form3" Action="" Method="post" autocomplete="off">
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<font size=5>You can submit your valuable <strong>feedback</strong> :</font> <center><textarea name="feedback" cols=40 rows=8 style=" border-radius: 15px" placeholder="
+
+      Enter your Feedback / complaint
+
+          (attach file if needed)"></textarea></center><br><br><br>
+
+<font size=4>Place to upload screenshot / file : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <INPUT TYPE="File" NAME="file" SIZE="30"></font><BR><BR><BR><BR><BR><BR>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="Submit" name="submit" value="Submit Feedback" style="height: 50px; width: 200px; font-size: 20px; background-color: grey; font-weight: bold; border-radius: 20px; cursor: pointer;"><br><br><br><br>
+
+</form>
+</body>
+</html>
