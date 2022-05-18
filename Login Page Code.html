@@ -1,0 +1,47 @@
+<?php
+session_start();
+include 'connection.php';
+if (isset($_POST['submit'])) {
+	$username= $_POST['username'];
+	$password = $_POST['password'];
+
+	$email_search = " select * from signup where username ='$username' and password='$password' ";
+	$query = mysqli_query($con, $email_search);
+	$email_count = mysqli_num_rows($query);
+
+	if ($email_count) {
+			echo("");
+	header("location: http://localhost/SUMIT/ques6.php");
+	} else {
+		echo("Username or Email incorrect");
+        header("location: incorrect.html");
+	}
+}
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login Details</title>
+<link rel="stylesheet" href="selector.css">
+</head>
+<body background="image14.png">
+
+<style> a{text-decoration: none;} </style>
+
+<div style="margin-right:150px; margin-left:150px; margin-top:60px; margin-bottom:60px; padding:30px; border:10px solid black; border-radius: 50px; background-color: silver;">
+<FORM name="login" Action="" Method="post" autocomplete="off">
+<center><H1 id="heading">LOGIN DETAILS</H1><BR><BR><BR><BR>
+
+<h2>USERNAME : <INPUT TYPE="TEXT" NAME="username" SIZE="30" placeholder="Enter your username" REQUIRED>
+<BR><BR><BR>
+
+PASSWORD : <INPUT TYPE="PASSWORD" NAME="password" SIZE="30" placeholder="Enter your password" REQUIRED>
+<BR><BR><BR><BR><BR></h2>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button name="submit" class="button" style="padding: 7px;  border-radius: 20px;">Proceed to Payment Gateway</button><BR><BR><BR>
+</center>
+</form>
+</div>
+</body>
+</html>
