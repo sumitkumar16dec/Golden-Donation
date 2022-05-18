@@ -1,0 +1,82 @@
+/*Element selector*/
+h1{
+   color: blue;
+}
+
+
+/*Class selector*/
+.special{
+   color: red;
+   font-weight: bold;
+}
+
+/*Descendent combinator*/
+select option{
+   color: orange;
+}
+
+/*Adscent combinator*/
+br+p{
+   font-size: 160%;
+}
+
+/*Pseudo class selector*/
+a:hover{
+   color: red;
+   text-decoration:none;
+}
+
+/*Id selector*/
+#heading{
+   color: blue;
+   background-color: orange;
+}
+
+/*Attribute selector*/
+input[type="Reset"]{
+   
+    cursor: pointer;
+}
+
+input[type="Submit"]{
+   
+    cursor: pointer;
+}
+
+
+/*Everything selector
+*{
+   color: pink;
+}*/
+
+.bg{ background-size: cover;
+}
+
+.button{
+   background-color: grey;
+   font-weight: bold;
+   font-size: 25px;
+}
+
+button:hover{
+   background-color: yellow;
+   font-size: 180%;
+}
+
+input[type="Submit"]:hover{
+   background-color: yellow;
+   font-size: 180%;
+}
+
+input[type="Reset"]:hover{
+   background-color: yellow;
+   font-size: 180%;
+}
+
+/* For glowing effect on headline*/
+#heading{
+  animation: glow 1s ease-in-out infinite alternate;
+}
+@-webkit-keyframes glow{
+  from{text-shadow: 0 0 10px blue, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073; }}
+
